@@ -1,0 +1,48 @@
+{
+    "timestamp": "20260503_183000",
+    "model_name": "EfficientNetB0_5Class_Final",
+    "backbone": "EfficientNetB0",
+    "dataset": "Intel Image Classification (glacier removed)",
+    "num_classes": 5,
+    "class_names": [
+        "buildings",
+        "forest",
+        "mountain",
+        "sea",
+        "street"
+    ],
+    "class_indices": {
+        "buildings": 0,
+        "forest": 1,
+        "mountain": 2,
+        "sea": 3,
+        "street": 4
+    },
+    "img_size": [
+        224,
+        224
+    ],
+    "batch_size": 32,
+    "epochs_frozen": 15,
+    "epochs_finetune": 20,
+    "dropout_rate": 0.4,
+    "performance": {
+        "test_accuracy": 0.9681,
+        "precision": 0.9683,
+        "recall": 0.9681,
+        "f1_score": 0.9682
+    },
+    "per_class_accuracy": {
+        "buildings": 0.9405,
+        "forest": 0.9916,
+        "mountain": 0.9714,
+        "sea": 0.9843,
+        "street": 0.9501
+    },
+    "saved_files": {
+        "keras": "/mnt/c/Users/AbdulHafeez/Brain_Tumor/Intel/Final_Model/efficientnetb0_5class_20260503_183000.keras",
+        "h5": "/mnt/c/Users/AbdulHafeez/Brain_Tumor/Intel/Final_Model/efficientnetb0_5class_20260503_183000.h5",
+        "saved_model": "/mnt/c/Users/AbdulHafeez/Brain_Tumor/Intel/Final_Model/saved_model/efficientnetb0_5class_20260503_183000",
+        "tflite": "/mnt/c/Users/AbdulHafeez/Brain_Tumor/Intel/Final_Model/tflite/efficientnetb0_5class_20260503_183000.tflite"
+    }
+}
