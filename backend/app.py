@@ -1,17 +1,30 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import tensorflow as tf
 import numpy as np
 from PIL import Image
 import io
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for frontend to communicate
-
 # Resolve paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DIST_DIR = os.path.join(BASE_DIR, 'frontend', 'dist')
 MODEL_PATH = os.path.join(BASE_DIR, 'Model', 'best_model_final.keras')
+
+# Initialize Flask to serve the static frontend files
+app = Flask(__name__, static_folder=DIST_DIR, static_url_path='/')
+CORS(app)  # Enable CORS for frontend to communicate
+
+@app.route('/')
+def serve_frontend():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 print(f"Loading model from: {MODEL_PATH}")
 try:
