@@ -129,6 +129,8 @@ def predict_image(image, model):
 
 # --- Sidebar ---
 with st.sidebar:
+    st.image("sidebar_image.png", use_container_width=True)
+    
     st.markdown("## 🧠 About the Project")
     st.markdown("""
         <div class="glass-card" style="padding: 15px;">
@@ -146,7 +148,7 @@ with st.sidebar:
     
     st.markdown("---")
     st.markdown("### 👤 Author")
-    st.markdown("**Abdul Hafeez**<br>ShadowFox Internship", unsafe_allow_html=True)
+    st.markdown("**Abdul Hafeez**", unsafe_allow_html=True)
 
 # --- Main Interface ---
 st.markdown("<h1>Image Tagging AI</h1>", unsafe_allow_html=True)
