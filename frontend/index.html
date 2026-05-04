@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Tagging AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    
+    <main class="app-container glass-panel">
+      <div class="layout-grid" id="main-layout">
+        
+        <!-- Left Column: Intro -->
+        <div id="intro-view" class="intro-column">
+          <header class="app-header">
+            <h1>AI <span>Tagging</span></h1>
+            <p>Professional Scene Classification</p>
+          </header>
+          
+          <div class="intro-image-wrapper">
+            <img src="/ai_tagging.png" alt="AI Image Tagging" class="intro-image" />
+          </div>
+          
+          <div class="intro-content">
+            <p>Powered by EfficientNetB0. Experience lightning-fast, high-precision detection for natural environments.</p>
+            
+            <div class="author-info">
+              <p>Built by <b>Abdul Hafeez</b></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Area -->
+        <div id="upload-view" class="interactive-column">
+          <div class="content-wrapper">
+            
+            <!-- Upload Section -->
+            <div id="upload-section" class="upload-area">
+              <div class="upload-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              </div>
+              <h3>Upload Image</h3>
+              <p>Drag & drop or click</p>
+              <input type="file" id="file-input" accept="image/jpeg, image/png, image/jpg" hidden />
+            </div>
+
+            <!-- Loading Section -->
+            <div id="loading-section" class="loading-state hidden">
+              <div class="spinner"></div>
+              <p>Analyzing...</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Full Width Results Section (Hidden by default) -->
+        <div id="results-view" class="results-view hidden">
+          <div class="results-header">
+            <h2>Analysis <span>Complete</span></h2>
+          </div>
+          <div class="results-grid">
+            <div class="result-image-area">
+              <div class="image-preview">
+                <img id="preview-img" src="" alt="Uploaded preview" />
+              </div>
+              <button id="reset-btn" class="btn-primary reset-btn-full">Tag Another Image</button>
+            </div>
+            
+            <div class="result-stats-area">
+              <div class="prediction-card">
+                <div id="top-prediction" class="top-tag">
+                  <span class="icon">✨</span>
+                  <span class="class-name">Loading...</span>
+                  <span class="confidence">0%</span>
+                </div>
+                
+                <div class="bars-container" id="bars-container">
+                  <!-- Bars injected by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
