@@ -129,7 +129,7 @@ def predict_image(image, model):
 
 # --- Sidebar ---
 with st.sidebar:
-    st.image("sidebar_image.png", use_container_width=True)
+    st.image("Task1/sidebar_image.png", use_container_width=True)
     
     st.markdown("## 🧠 About the Project")
     st.markdown("""
