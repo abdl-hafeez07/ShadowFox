@@ -95,7 +95,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Constants & Classes ---
-MODEL_PATH = 'Model/best_model_final.keras'
+MODEL_PATH = 'Task1/Model/best_model_final.keras'
 CLASSES = ['Buildings 🏢', 'Forest 🌲', 'Mountain ⛰️', 'Sea 🌊', 'Street 🛣️']
 
 # --- Load Model (Cached) ---
