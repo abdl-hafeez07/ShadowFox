@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Store Sales & Profit Prediction System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center" style="min-height: 85vh;">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="badge bg-primary bg-opacity-25 text-primary border border-primary rounded-pill px-3 py-2 mb-4 animate-fade-in-up">
+                    <i class="fa-solid fa-bolt me-1"></i> Powered by Tuned XGBoost
+                </div>
+                <h1 class="display-3 fw-bold mb-4 animate-fade-in-up delay-1">
+                    AI-Powered Store Sales & <br> <span class="gradient-text">Profit Prediction</span>
+                </h1>
+                <p class="lead text-secondary mb-5 animate-fade-in-up delay-2">
+                    Advanced Machine Learning system using Tuned XGBoost to analyze retail sales, discounts, and profitability patterns. Turn your retail data into actionable business intelligence.
+                </p>
+                <div class="animate-fade-in-up delay-3">
+                    <a href="{{ url_for('prediction') }}" class="btn btn-primary btn-lg rounded-pill px-5 py-3 me-3 glow-btn">
+                        Start Prediction <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg rounded-pill px-5 py-3">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 mt-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Platform <span class="gradient-text">Features</span></h2>
+            <p class="text-muted">Comprehensive tools for retail analytics.</p>
+        </div>
+        <div class="row g-4">
+            <!-- Feature 1 -->
+            <div class="col-md-4">
+                <div class="glass-card feature-card h-100 p-4 text-center">
+                    <div class="feature-icon bg-primary bg-opacity-25 text-primary mb-4 mx-auto">
+                        <i class="fa-solid fa-chart-pie fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Sales Analysis</h5>
+                    <p class="text-muted small">Deep dive into historical sales data to understand revenue patterns and growth opportunities.</p>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="col-md-4">
+                <div class="glass-card feature-card h-100 p-4 text-center">
+                    <div class="feature-icon bg-success bg-opacity-25 text-success mb-4 mx-auto">
+                        <i class="fa-solid fa-money-bill-trend-up fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Profit Forecasting</h5>
+                    <p class="text-muted small">Predict future profitability based on multiple retail parameters with high accuracy.</p>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="col-md-4">
+                <div class="glass-card feature-card h-100 p-4 text-center">
+                    <div class="feature-icon bg-warning bg-opacity-25 text-warning mb-4 mx-auto">
+                        <i class="fa-solid fa-tags fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Discount Impact</h5>
+                    <p class="text-muted small">Analyze how promotional discounts affect your overall margins and revenue.</p>
+                </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="col-md-4">
+                <div class="glass-card feature-card h-100 p-4 text-center">
+                    <div class="feature-icon bg-info bg-opacity-25 text-info mb-4 mx-auto">
+                        <i class="fa-solid fa-lightbulb fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Business Intelligence</h5>
+                    <p class="text-muted small">Extract actionable insights from raw data to drive strategic business decisions.</p>
+                </div>
+            </div>
+            <!-- Feature 5 -->
+            <div class="col-md-4">
+                <div class="glass-card feature-card h-100 p-4 text-center">
+                    <div class="feature-icon bg-danger bg-opacity-25 text-danger mb-4 mx-auto">
+                        <i class="fa-solid fa-layer-group fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">Feature Importance</h5>
+                    <p class="text-muted small">Understand which factors drive the most impact on your store's profitability.</p>
+                </div>
+            </div>
+            <!-- Feature 6 -->
+            <div class="col-md-4">
+                <div class="glass-card feature-card h-100 p-4 text-center">
+                    <div class="feature-icon bg-purple bg-opacity-25 text-purple mb-4 mx-auto">
+                        <i class="fa-solid fa-microchip fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">ML Optimization</h5>
+                    <p class="text-muted small">Leveraging advanced hyperparameter tuning for maximum predictive performance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Model Performance -->
+<section id="performance" class="py-5 my-5 bg-black bg-opacity-25">
+    <div class="container py-4">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="fw-bold mb-4">Model <span class="gradient-text">Performance</span></h2>
+                <p class="text-muted mb-4">Our prediction engine uses a highly optimized XGBoost algorithm, trained on comprehensive Superstore datasets, balanced to eliminate bias.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <span class="badge glass-badge fs-6 px-3 py-2"><i class="fa-solid fa-check text-success me-2"></i>Tuned XGBoost</span>
+                    <span class="badge glass-badge fs-6 px-3 py-2"><i class="fa-solid fa-scale-balanced text-info me-2"></i>Balanced Model</span>
+                    <span class="badge glass-badge fs-6 px-3 py-2"><i class="fa-solid fa-gears text-warning me-2"></i>Hyperparameter Tuned</span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="glass-card p-4 text-center h-100 metric-card">
+                            <h3 class="display-5 fw-bold text-success mb-2">0.837</h3>
+                            <p class="text-muted mb-0 fw-medium">Test R² Score</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="glass-card p-4 text-center h-100 metric-card">
+                            <h3 class="display-5 fw-bold text-primary mb-2">11.69</h3>
+                            <p class="text-muted mb-0 fw-medium">RMSE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

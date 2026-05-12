@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction - Store Sales & Profit Prediction System{% endblock %}
+
+{% block content %}
+<section class="prediction-section py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold">AI Profit <span class="gradient-text">Predictor</span></h2>
+                <p class="text-muted">Enter the parameters below to forecast profitability.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- Main Content: Input Form -->
+            <div class="col-lg-8 col-xl-6">
+                <div class="glass-card p-4 p-md-5 form-container position-relative">
+                    <form action="{{ url_for('predict') }}" method="POST" id="predictionForm">
+                        
+                        <!-- Sales -->
+                        <div class="mb-4 input-group-custom">
+                            <label for="sales" class="form-label fw-medium text-light"><i class="fa-solid fa-dollar-sign me-2 text-primary"></i>Sales Value</label>
+                            <div class="input-glass-wrapper">
+                                <input type="number" step="0.01" class="form-control glass-input" id="sales" name="sales" placeholder="e.g. 500.00" required>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="mb-4 input-group-custom">
+                            <label for="quantity" class="form-label fw-medium text-light"><i class="fa-solid fa-cubes me-2 text-info"></i>Quantity</label>
+                            <div class="input-glass-wrapper">
+                                <input type="number" class="form-control glass-input" id="quantity" name="quantity" placeholder="e.g. 5" required>
+                            </div>
+                        </div>
+
+                        <!-- Discount -->
+                        <div class="mb-4 input-group-custom">
+                            <label for="discount" class="form-label fw-medium text-light d-flex justify-content-between">
+                                <span><i class="fa-solid fa-percent me-2 text-warning"></i>Discount Rate</span>
+                                <span id="discountVal" class="text-warning">0.00</span>
+                            </label>
+                            <input type="range" class="form-range custom-range" id="discount" name="discount" min="0" max="0.8" step="0.05" value="0">
+                        </div>
+
+                        <!-- Category -->
+                        <div class="mb-4 input-group-custom">
+                            <label for="category" class="form-label fw-medium text-light"><i class="fa-solid fa-folder me-2 text-purple"></i>Category</label>
+                            <select class="form-select glass-select" id="category" name="category" required>
+                                <option value="" selected disabled>Select Category</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Office Supplies">Office Supplies</option>
+                                <option value="Technology">Technology</option>
+                            </select>
+                        </div>
+
+                        <!-- Sub-Category -->
+                        <div class="mb-4 input-group-custom">
+                            <label for="sub_category" class="form-label fw-medium text-light"><i class="fa-solid fa-folder-open me-2 text-purple"></i>Sub-Category</label>
+                            <select class="form-select glass-select" id="sub_category" name="sub_category" required>
+                                <option value="" selected disabled>Select Sub-Category</option>
+                                <!-- Populated dynamically via JS -->
+                            </select>
+                        </div>
+
+                        <!-- State -->
+                        <div class="mb-5 input-group-custom">
+                            <label for="state" class="form-label fw-medium text-light"><i class="fa-solid fa-map-pin me-2 text-danger"></i>State</label>
+                            <select class="form-select glass-select" id="state" name="state" required>
+                                <option value="" selected disabled>Select State</option>
+                                <option value="California">California</option>
+                                <option value="New York">New York</option>
+                                <option value="Texas">Texas</option>
+                                <option value="Washington">Washington</option>
+                                <option value="Illinois">Illinois</option>
+                                <!-- More can be added -->
+                            </select>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary flex-grow-1 glow-btn rounded-pill fw-bold py-2" id="predictBtn">
+                                <span class="btn-text">Predict Profit</span>
+                                <div class="spinner-border spinner-border-sm ms-2 d-none btn-loader" role="status"></div>
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary rounded-pill px-4 py-2">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay d-none">
+        <div class="text-center">
+            <div class="ai-loader mb-4">
+                <div class="loader-circle"></div>
+                <div class="loader-circle delay-1"></div>
+                <div class="loader-circle delay-2"></div>
+                <i class="fa-solid fa-microchip ai-icon text-primary"></i>
+            </div>
+            <h4 class="fw-bold text-light glow-text">Analyzing Patterns...</h4>
+            <p class="text-muted" id="loadingText">Running through XGBoost Engine</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

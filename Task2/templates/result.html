@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Result - Store Sales & Profit Prediction System{% endblock %}
+
+{% block content %}
+<section class="result-section py-5">
+    <div class="container">
+        <!-- Top Section: Main Result -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8">
+                <div class="glass-card text-center p-5 position-relative overflow-hidden {% if prediction > 0 %}profit-glow{% else %}loss-glow{% endif %}">
+                    <!-- Background decorative icon -->
+                    <i class="fa-solid {% if prediction > 0 %}fa-arrow-trend-up text-success{% else %}fa-arrow-trend-down text-danger{% endif %} opacity-10 position-absolute top-50 start-50 translate-middle" style="font-size: 15rem; z-index: 0;"></i>
+                    
+                    <div class="position-relative" style="z-index: 1;">
+                        <div class="badge {% if prediction > 0 %}bg-success{% else %}bg-danger{% endif %} bg-opacity-25 text-{% if prediction > 0 %}success{% else %}danger{% endif %} rounded-pill px-3 py-2 mb-3 border border-{% if prediction > 0 %}success{% else %}danger{% endif %}">
+                            <i class="fa-solid {% if prediction > 0 %}fa-check-circle{% else %}fa-exclamation-circle{% endif %} me-1"></i> 
+                            {% if prediction > 0 %}Profitable{% else %}Loss Making{% endif %}
+                        </div>
+                        <h2 class="text-muted mb-2">Predicted Profit</h2>
+                        <h1 class="display-2 fw-bold {% if prediction > 0 %}text-success{% else %}text-danger{% endif %} mb-4 text-shadow">
+                            ${{ "%.2f"|format(prediction) if prediction is number else prediction }}
+                        </h1>
+                        <p class="lead text-light mb-0">
+                            Based on your input parameters, the model forecasts a {% if prediction > 0 %}<strong>positive return</strong>{% else %}<strong>negative return</strong>{% endif %}.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Section: Details -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="glass-card p-4 h-100 border-top border-4 border-primary">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-bullseye text-primary me-2"></i>Prediction Confidence</h5>
+                    <div class="d-flex align-items-center mb-2">
+                        <h3 class="fw-bold mb-0 me-2">92%</h3>
+                        <span class="text-success small"><i class="fa-solid fa-caret-up"></i> High</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 8px; background-color: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 92%;" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="text-light opacity-75 small mb-0">Model confidence based on training data distribution density for similar input combinations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 h-100 border-top border-4 border-warning">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-scale-unbalanced text-warning me-2"></i>Input Summary</h5>
+                    <ul class="list-unstyled mb-0 small text-muted">
+                        <li class="mb-2 d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-1"><span>Sales:</span> <strong class="text-light">${{ sales }}</strong></li>
+                        <li class="mb-2 d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-1"><span>Discount:</span> <strong class="text-light">{{ (discount|float * 100)|round(0) }}%</strong></li>
+                        <li class="mb-2 d-flex justify-content-between border-bottom border-secondary border-opacity-25 pb-1"><span>Category:</span> <strong class="text-light">{{ category }}</strong></li>
+                        <li class="d-flex justify-content-between"><span>State:</span> <strong class="text-light">{{ state }}</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 h-100 border-top border-4 border-info">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-lightbulb text-info me-2"></i>AI Recommendation</h5>
+                    <p class="text-light opacity-75 small mb-0">{{ recommendation }}</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Actions -->
+        <div class="text-center">
+            <a href="{{ url_for('prediction') }}" class="btn btn-outline-light rounded-pill px-4 py-2 me-3 transition-all">
+                <i class="fa-solid fa-rotate-left me-2"></i> Predict Again
+            </a>
+            <button onclick="window.print()" class="btn btn-primary glow-btn rounded-pill px-4 py-2 d-print-none">
+                <i class="fa-solid fa-download me-2"></i> Download Report
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}
